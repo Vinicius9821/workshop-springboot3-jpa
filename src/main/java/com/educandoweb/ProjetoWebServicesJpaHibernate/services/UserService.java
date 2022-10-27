@@ -4,6 +4,7 @@ import com.educandoweb.ProjetoWebServicesJpaHibernate.entities.User;
 import com.educandoweb.ProjetoWebServicesJpaHibernate.repository.UserRepository;
 import com.educandoweb.ProjetoWebServicesJpaHibernate.resources.exceptions.DatabaseExcpetion;
 import com.educandoweb.ProjetoWebServicesJpaHibernate.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -43,9 +44,14 @@ public class UserService {
     }
 
     public User update(Long id, User obj){
-        User entity = repo.getReferenceById(id);
-        updateData(entity, obj);
-        return repo.save(entity);
+        try {
+            User entity = repo.getReferenceById(id);
+            updateData(entity, obj);
+            return repo.save(entity);
+        }catch (EntityNotFoundException e){
+            throw new ResourceNotFoundException(id);
+        }
+
     }
 
     private void updateData(User entity, User obj){
