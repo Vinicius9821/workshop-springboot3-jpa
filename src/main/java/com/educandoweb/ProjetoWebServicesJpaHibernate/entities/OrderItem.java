@@ -1,10 +1,10 @@
 package com.educandoweb.ProjetoWebServicesJpaHibernate.entities;
 
 import com.educandoweb.ProjetoWebServicesJpaHibernate.entities.pk.OrdemItemPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import org.aspectj.weaver.ast.Or;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -12,20 +12,20 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_order_item")
-public class OrdemItem implements Serializable {
+public class OrderItem implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
     @EmbeddedId
-    private OrdemItemPK id;
+    private OrdemItemPK id = new OrdemItemPK();
     private Integer quantity;
     private Double price;
 
-    public OrdemItem() {
+    public OrderItem() {
     }
 
-    public OrdemItem(Order order, Product product, Integer quantity, Double price) {
+    public OrderItem(Order order, Product product, Integer quantity, Double price) {
         super();
         id.setOrder(order);
         id.setProduct(product);
@@ -33,6 +33,7 @@ public class OrdemItem implements Serializable {
         this.price = price;
     }
 
+    @JsonIgnore
     public Order getOrder(){
         return id.getOrder();
     }
@@ -69,7 +70,7 @@ public class OrdemItem implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrdemItem ordemItem = (OrdemItem) o;
+        OrderItem ordemItem = (OrderItem) o;
         return Objects.equals(id, ordemItem.id);
     }
 
