@@ -2,8 +2,11 @@ package com.educandoweb.ProjetoWebServicesJpaHibernate.services;
 
 import com.educandoweb.ProjetoWebServicesJpaHibernate.entities.User;
 import com.educandoweb.ProjetoWebServicesJpaHibernate.repository.UserRepository;
+import com.educandoweb.ProjetoWebServicesJpaHibernate.resources.exceptions.DatabaseExcpetion;
 import com.educandoweb.ProjetoWebServicesJpaHibernate.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +32,14 @@ public class UserService {
     }
 
     public void delete(Long id){
-        repo.deleteById(id);
+        try {
+            repo.deleteById(id);
+        } catch (EmptyResultDataAccessException e){
+            throw new ResourceNotFoundException(id);
+        } catch (DataIntegrityViolationException e){
+            throw new DatabaseExcpetion(e.getMessage());
+        }
+
     }
 
     public User update(Long id, User obj){
