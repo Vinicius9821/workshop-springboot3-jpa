@@ -1,4 +1,4 @@
-package com.educandoweb.ProjetoWebServicesJpaHibernate.service;
+package com.educandoweb.ProjetoWebServicesJpaHibernate.services;
 
 import com.educandoweb.ProjetoWebServicesJpaHibernate.entities.Order;
 import com.educandoweb.ProjetoWebServicesJpaHibernate.repository.OrderRepository;

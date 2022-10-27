@@ -2,7 +2,7 @@ package com.educandoweb.ProjetoWebServicesJpaHibernate.resources;
 
 
 import com.educandoweb.ProjetoWebServicesJpaHibernate.entities.Product;
-import com.educandoweb.ProjetoWebServicesJpaHibernate.service.ProductService;
+import com.educandoweb.ProjetoWebServicesJpaHibernate.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,7 @@
 package com.educandoweb.ProjetoWebServicesJpaHibernate.resources;
 
 import com.educandoweb.ProjetoWebServicesJpaHibernate.entities.User;
-import com.educandoweb.ProjetoWebServicesJpaHibernate.service.UserService;
+import com.educandoweb.ProjetoWebServicesJpaHibernate.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

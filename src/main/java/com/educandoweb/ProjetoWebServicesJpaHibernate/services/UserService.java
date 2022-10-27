@@ -1,7 +1,8 @@
-package com.educandoweb.ProjetoWebServicesJpaHibernate.service;
+package com.educandoweb.ProjetoWebServicesJpaHibernate.services;
 
 import com.educandoweb.ProjetoWebServicesJpaHibernate.entities.User;
 import com.educandoweb.ProjetoWebServicesJpaHibernate.repository.UserRepository;
+import com.educandoweb.ProjetoWebServicesJpaHibernate.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class UserService {
 
     public User findById(Long id){
         Optional<User> obj = repo.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public User insert(User obj){

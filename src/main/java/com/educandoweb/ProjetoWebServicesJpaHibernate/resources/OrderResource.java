@@ -2,7 +2,7 @@ package com.educandoweb.ProjetoWebServicesJpaHibernate.resources;
 
 
 import com.educandoweb.ProjetoWebServicesJpaHibernate.entities.Order;
-import com.educandoweb.ProjetoWebServicesJpaHibernate.service.OrderService;
+import com.educandoweb.ProjetoWebServicesJpaHibernate.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

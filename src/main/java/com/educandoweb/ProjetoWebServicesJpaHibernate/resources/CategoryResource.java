@@ -2,7 +2,7 @@ package com.educandoweb.ProjetoWebServicesJpaHibernate.resources;
 
 
 import com.educandoweb.ProjetoWebServicesJpaHibernate.entities.Category;
-import com.educandoweb.ProjetoWebServicesJpaHibernate.service.CategoryService;
+import com.educandoweb.ProjetoWebServicesJpaHibernate.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
